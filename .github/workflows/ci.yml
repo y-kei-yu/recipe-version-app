@@ -26,6 +26,9 @@ jobs:
       - name: lint（書き方のチェック）
         run: npm run lint
 
+      - name: 型生成
+        run: npx next typegen
+
       - name: 型チェック
         run: npx tsc --noEmit
 
