@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 
-
 export default function Page() {
   return (
     <div>
@@ -9,5 +8,5 @@ export default function Page() {
         保存
       </Button>
     </div>
-  )
+  );
 }

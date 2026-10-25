@@ -90,7 +90,7 @@ make build    # ビルド
 docker compose up -d      # ローカルDB起動
 npx prisma migrate dev    # migration 実行
 npx prisma studio         # DBの中身を確認
-npx tsc --noEmit          # 型チェック
+npx next typegen && npx tsc --noEmit   # 型チェック（先に Next.js の型を作る）
 npm run lint              # lint
 ```
 

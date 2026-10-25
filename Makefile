@@ -1,4 +1,5 @@
 .PHONY: dev test build
+
 dev:
 	npm run dev
 
@@ -7,5 +8,3 @@ test:
 
 build:
 	npm run build
-	
-
