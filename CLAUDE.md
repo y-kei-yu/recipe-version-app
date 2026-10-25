@@ -90,7 +90,7 @@ make build    # ビルド
 docker compose up -d      # ローカルDB起動
 npx prisma migrate dev    # migration 実行
 npx prisma studio         # DBの中身を確認
-npx tsc --noEmit          # 型チェック
+npx next typegen && npx tsc --noEmit   # 型チェック（先に Next.js の型を作る）
 npm run lint              # lint
 ```
 
@@ -125,3 +125,4 @@ npm run lint              # lint
 - 仕様書の該当チェックボックスを更新する
 - 設計上の判断をした場合は `docs/adr/` に数行で残す（文章は開発者が書く）
 - その日に学んだこと・詰まったことを `docs/learning-log.md` に1〜3行で残す（面接・技術記事の材料にする）
+- エラーで詰まった場合は、くわしい記録を `docs/troubleshooting/YYYY-MM-DD-内容.md` に残し、`learning-log.md` からリンクする（何が起きたか・エラーの読み方・原因・解決法・学んだこと）
