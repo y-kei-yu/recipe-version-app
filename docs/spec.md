@@ -586,7 +586,7 @@ MVP段階ではログイン機能を持たない（利用者は自分1人を想�
 ### 実装TODO
 
 - [x] Next.js（TypeScript・App Router）の環境を作成する
-- [ ] 開発サーバーを起動し、画面が表示されることを確認する
+- [x] 開発サーバーを起動し、画面が表示されることを確認する
 - [x] Tailwind CSSを導入する
 - [x] shadcn/uiを導入する
 - [x] Docker Compose を作成する
@@ -598,30 +598,30 @@ MVP段階ではログイン機能を持たない（利用者は自分1人を想�
 - [x] Prisma を初期化する
 - [x] schema.prisma を作成する（RecipeおよびRecipeVersionモデルを定義）
 - [x] migration を実行する
-- [ ] Prisma Studio でデータを確認する
-- [ ] VitestとReact Testing Libraryを導入する
-- [ ] サンプルテストを作成する
-- [ ] Makefileを作成する（対象OS：Mac / Linux）
-- [ ] `make dev` で開発サーバーが起動する
-- [ ] `make test` でテストが実行できる
-- [ ] `make build` でビルドが実行できる
-- [ ] GitHub Actionsのworkflowファイルを作成する
-  - [ ] Pull Request と main への push で実行される
-  - [ ] lint が実行される
-  - [ ] 型チェック（`tsc --noEmit`）が実行される
-  - [ ] テストが実行される
-  - [ ] build が実行される
+- [x] Prisma Studio でデータを確認する
+- [x] VitestとReact Testing Libraryを導入する
+- [x] サンプルテストを作成する
+- [x] Makefileを作成する（対象OS：Mac / Linux）
+- [x] `make dev` で開発サーバーが起動する
+- [x] `make test` でテストが実行できる
+- [x] `make build` でビルドが実行できる
+- [x] GitHub Actionsのworkflowファイルを作成する
+  - [x] Pull Request と main への push で実行される
+  - [x] lint が実行される
+  - [x] 型チェック（`tsc --noEmit`）が実行される
+  - [x] テストが実行される
+  - [x] build が実行される
 
 ### 完了条件
 
-- [ ] localhostで画面が表示される
-- [ ] PostgreSQL に接続できる
-- [ ] migration が成功する
-- [ ] Prisma Studio が起動できる
-- [ ] `npm run test` が成功する
-- [ ] `npm run build` が成功する
-- [ ] Pull Request を作るとCIが実行され、成功する
-- [ ] テストが失敗するとCIが失敗する
+- [x] localhostで画面が表示される
+- [x] PostgreSQL に接続できる
+- [x] migration が成功する
+- [x] Prisma Studio が起動できる
+- [x] `npm run test` が成功する
+- [x] `npm run build` が成功する
+- [x] Pull Request を作るとCIが実行され、成功する
+- [x] テストが失敗するとCIが失敗する
 
 ---
 
