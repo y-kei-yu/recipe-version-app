@@ -9,6 +9,9 @@ export default function RecipesPage() {
   return (
     <div>
       <h1>レシピ一覧</h1>
+      <Link href="/recipes/new">
+        新規作成
+      </Link>
       <ul>
         {recipeData.map((recipe) => (
           <li key={recipe.id}>
