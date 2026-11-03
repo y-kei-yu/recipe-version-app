@@ -13,3 +13,7 @@
 ## 2026-10-25
 
 - `next dev` で Rosetta 2 の警告。ターミナルアプリが「Rosetta を使用して開く」になっていて、Node.js が Intel 版で入っていた。設定を直し、Node.js と `node_modules` を入れ直した（→ [troubleshooting/2026-10-25-rosetta-node-x64.md](troubleshooting/2026-10-25-rosetta-node-x64.md)）
+
+## 2026-11-03
+
+- ブランチを切り替えたあと、`npx next typegen && npx tsc --noEmit` で型エラー。前のブランチで `next dev` を動かしたときの `.next/dev/types/` が古いまま残っていて、今のブランチにないページを探していた。`make dev` で作り直して解決（`rm -rf .next` で消してもよい）（→ [troubleshooting/2026-11-03-ブランチ切り替え後の型エラー.md](troubleshooting/2026-11-03-ブランチ切り替え後の型エラー.md)）
