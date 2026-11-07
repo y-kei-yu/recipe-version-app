@@ -24,7 +24,12 @@ export default function RecipeList({
               </h2>
               <p>{recipe.description || "記載なし"}</p>
               <p>最新バージョン: {recipe.latestVersionNumber}</p>
-              <p>更新日: {recipe.updatedAt.toLocaleDateString('ja-JP', { timeZone: "Asia/Tokyo" }).replaceAll('/', '-')}</p>
+              <p>更新日: {recipe.updatedAt.toLocaleDateString('ja-JP', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                timeZone: "Asia/Tokyo"
+              }).replaceAll('/', '-')}</p>
             </li>
           ))}
         </ul>
