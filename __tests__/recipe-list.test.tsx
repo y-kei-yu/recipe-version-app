@@ -38,7 +38,6 @@ test("複数のレシピが、渡した件数分表示される", () => {
   const listItem = screen.getAllByRole("listitem");
 
   expect(listItem).toHaveLength(3);
-
 });
 
 test("レシピ名、説明、最新バージョン番号、更新日が表示される", () => {
@@ -51,13 +50,28 @@ test("レシピ名、説明、最新バージョン番号、更新日が表示�
   expect(within(listItem[0]).getByText("更新日: 2026-11-01")).toBeDefined();
 
   expect(within(listItem[2]).getByText("記載なし")).toBeDefined();
-
 });
 
 test("説明が未記入の表示確認", () => {
   render(<RecipeList recipes={mockRecipe} />);
   const listItem = screen.getAllByRole("listitem");
+
   expect(within(listItem[2]).getByText("記載なし")).toBeDefined();
+});
+
+test("各レシピに詳細画面へのリンクがある", () => {
+  render(<RecipeList recipes={mockRecipe} />);
+  const recipeLink1 = screen.getByRole("link", { name: "レシピ1" });
+  const recipeLink1Href = recipeLink1.getAttribute("href");
+  expect(recipeLink1Href).toBe("/recipes/1");
+
+  const recipeLink2 = screen.getByRole("link", { name: "レシピ2" });
+  const recipeLink2Href = recipeLink2.getAttribute("href");
+  expect(recipeLink2Href).toBe("/recipes/2");
+
+  const recipeLink3 = screen.getByRole("link", { name: "レシピ3" });
+  const recipeLink3Href = recipeLink3.getAttribute("href");
+  expect(recipeLink3Href).toBe("/recipes/3");
 
 });
 
