@@ -82,3 +82,9 @@ test("新規作成リンクが表示される", () => {
   expect(createLinkHref).toBe("/recipes/new");
 });
 
+test("レシピが0件の場合、メッセージが表示される", () => {
+  render(<RecipeList recipes={[]} />);
+  expect(screen.getByText("まだレシピがありません。新規作成から追加しましょう")).toBeDefined();
+  expect(screen.queryAllByRole("listitem")).toHaveLength(0);
+});
+
