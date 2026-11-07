@@ -75,3 +75,10 @@ test("各レシピに詳細画面へのリンクがある", () => {
 
 });
 
+test("新規作成リンクが表示される", () => {
+  render(<RecipeList recipes={mockRecipe} />);
+  const createLink = screen.getByRole("link", { name: "新規作成" });
+  const createLinkHref = createLink.getAttribute("href");
+  expect(createLinkHref).toBe("/recipes/new");
+});
+
