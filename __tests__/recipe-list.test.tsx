@@ -44,47 +44,41 @@ test("レシピ名、説明、最新バージョン番号、更新日が表示�
   render(<RecipeList recipes={mockRecipe} />);
   const listItem = screen.getAllByRole("listitem");
 
-  expect(within(listItem[0]).getByText("レシピ1")).toBeDefined();
-  expect(within(listItem[0]).getByText("レシピ1の説明")).toBeDefined();
-  expect(within(listItem[0]).getByText("最新バージョン: 1")).toBeDefined();
-  expect(within(listItem[0]).getByText("更新日: 2026-11-01")).toBeDefined();
-
-  expect(within(listItem[2]).getByText("記載なし")).toBeDefined();
+  expect(within(listItem[0]).getByText("レシピ1")).toBeInTheDocument();
+  expect(within(listItem[0]).getByText("レシピ1の説明")).toBeInTheDocument();
+  expect(within(listItem[0]).getByText("最新バージョン: 1")).toBeInTheDocument();
+  expect(within(listItem[0]).getByText("更新日: 2026-11-01")).toBeInTheDocument();
 });
 
 test("説明が未記入の表示確認", () => {
   render(<RecipeList recipes={mockRecipe} />);
   const listItem = screen.getAllByRole("listitem");
 
-  expect(within(listItem[2]).getByText("記載なし")).toBeDefined();
+  expect(within(listItem[2]).getByText("記載なし")).toBeInTheDocument();
 });
 
 test("各レシピに詳細画面へのリンクがある", () => {
   render(<RecipeList recipes={mockRecipe} />);
   const recipeLink1 = screen.getByRole("link", { name: "レシピ1" });
-  const recipeLink1Href = recipeLink1.getAttribute("href");
-  expect(recipeLink1Href).toBe("/recipes/1");
+  expect(recipeLink1).toHaveAttribute("href", "/recipes/1");
 
   const recipeLink2 = screen.getByRole("link", { name: "レシピ2" });
-  const recipeLink2Href = recipeLink2.getAttribute("href");
-  expect(recipeLink2Href).toBe("/recipes/2");
+  expect(recipeLink2).toHaveAttribute("href", "/recipes/2");
 
   const recipeLink3 = screen.getByRole("link", { name: "レシピ3" });
-  const recipeLink3Href = recipeLink3.getAttribute("href");
-  expect(recipeLink3Href).toBe("/recipes/3");
+  expect(recipeLink3).toHaveAttribute("href", "/recipes/3");
 
 });
 
 test("新規作成リンクが表示される", () => {
   render(<RecipeList recipes={mockRecipe} />);
   const createLink = screen.getByRole("link", { name: "新規作成" });
-  const createLinkHref = createLink.getAttribute("href");
-  expect(createLinkHref).toBe("/recipes/new");
+  expect(createLink).toHaveAttribute("href", "/recipes/new");
 });
 
 test("レシピが0件の場合、メッセージが表示される", () => {
   render(<RecipeList recipes={[]} />);
-  expect(screen.getByText("まだレシピがありません。新規作成から追加しましょう")).toBeDefined();
-  expect(screen.queryAllByRole("listitem")).toHaveLength(0);
+  expect(screen.getByText("まだレシピがありません。新規作成から追加しましょう")).toBeInTheDocument();
+  expect(screen.queryByRole("listitem")).not.toBeInTheDocument();
 });
 
