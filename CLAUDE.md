@@ -8,7 +8,7 @@
 
 - 仕様の正は `docs/spec.md`（レシピのバージョン管理アプリ v4）。実装前に必ず該当箇所を読むこと
 - 設計判断の記録は `docs/adr/`
-- 進め方は仕様書の MVP1 → MVP9 の順。先のMVPの作業を先取りしない
+- 進め方は仕様書の MVP1 → MVP10 の順。先のMVPの作業を先取りしない
 
 ## 最重要：このリポジトリでの進め方（学習モード）
 
@@ -50,7 +50,7 @@
 
 - 見た目は Claude に任せる。開発者はまず装飾なしのマークアップで動くものを書き、その後 Claude がスタイルを付ける
 - スタイルを付けるとき、Claude はロジック（state、props、イベント処理、条件分岐、データ取得）を変更しない。変更が必要な場合は理由を伝え、開発者が直す
-- デザインの方針（色、余白、フォント、カードやボタンの形）は MVP2 で一度決め、以降の画面はそれに揃える
+- デザインの方針（色、余白、フォント、カードやボタンの形）は MVP5 で一度決め、以降の画面はそれに揃える
 - すべての画面でスマートフォン幅（375px）を先に確認する
 - 色だけに頼らない表示にする（差分は `+` `-` の記号も付ける）
 
@@ -79,7 +79,7 @@
 
 ## 技術スタック
 
-Next.js（App Router）/ TypeScript / Tailwind CSS / shadcn/ui / Zod / Prisma / PostgreSQL / diff（jsdiff）/ Vitest / React Testing Library / Playwright / GitHub Actions / Vercel + Neon
+Next.js（App Router）/ TypeScript / Tailwind CSS / shadcn/ui / Zod / Prisma / PostgreSQL / diff（jsdiff）/ Vitest / React Testing Library / jest-dom / Playwright / GitHub Actions / Vercel + Neon
 
 ## コマンド
 
@@ -113,7 +113,7 @@ npm run lint              # lint
 
 ## Git・PR
 
-- PRは **MVP1つにつき1本**（全部で9本ほど）。TODOごとには作らない
+- PRは **MVP1つにつき1本**（全部で10本ほど）。TODOごとには作らない
 - MVPの開始時にブランチを1本切り（例：`mvp2-recipe-list`）、作業中はそのブランチに小さくコミットして push する
 - コミットメッセージは開発者が書く（1行でよい。例：「レシピ一覧の0件表示を追加」）
 - MVPの完了条件を満たしたらPRを作る。PR説明文は Claude が下書きし、開発者が内容を確認・修正してから出す
