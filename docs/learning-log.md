@@ -17,3 +17,13 @@
 ## 2026-11-03
 
 - ブランチを切り替えたあと、`npx next typegen && npx tsc --noEmit` で型エラー。前のブランチで `next dev` を動かしたときの `.next/dev/types/` が古いまま残っていて、今のブランチにないページを探していた。`make dev` で作り直して解決（`rm -rf .next` で消してもよい）（→ [troubleshooting/2026-11-03-ブランチ切り替え後の型エラー.md](troubleshooting/2026-11-03-ブランチ切り替え後の型エラー.md)）
+
+## 2026-11-07
+
+- テストを書いたら、更新日の月・日が1桁（2026-11-1）になるバグが見つかった。month: '2-digit' と day: '2-digit' で直した
+- getByTestId より getByText / getByRole を優先する（利用者が見ているもので確かめるため）
+- within で「どの欄に表示されているか」まで確かめられる
+
+## 2026-11-08
+
+- queryAllByRole は見つからないと null ではなく [] を返す。"null" と文字列で書いてしまい、必ず通る（何も確かめていない）テスト になっていた → jest-dom を導入（→ [adr/0004-jest-domを使う.md](adr/0004-jest-domを使う.md)）
