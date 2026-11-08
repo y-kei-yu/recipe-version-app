@@ -87,6 +87,7 @@ Next.js（App Router）/ TypeScript / Tailwind CSS / shadcn/ui / Zod / Prisma / 
 make dev      # 開発サーバー起動
 make test     # テスト実行
 make build    # ビルド
+make check    # CI と同じチェック（lint → 型チェック → テスト → ビルド）
 docker compose up -d      # ローカルDB起動
 npx prisma migrate dev    # migration 実行
 npx prisma studio         # DBの中身を確認
@@ -120,7 +121,7 @@ npm run lint              # lint
 - レビュー担当は Claude。PRの差分全体を読み、仕様書とのずれ・バグ・テストの抜けを指摘する。直すのは開発者
   - レビューはチャットで行い、Claude は指摘を PR に貼れる Markdown（チェックボックス付き）にまとめる
   - 開発者がそれを PR のコメントとして投稿する。直して push したら、チェックを `[x]` にして「対応しました」と返信する
-- PR を出す前・push する前に、CI と同じチェックを手元で行う（`npm run lint` → `npx next typegen && npx tsc --noEmit` → `make test` → `make build`）
+- PR を出す前・push する前に、CI と同じチェックを手元で行う（`make check`）
 - CI（lint・型チェック・テスト・ビルド）が通ったら、開発者が自分でマージする。マージは **Create a merge commit** を使う（小さなコミットの履歴を main に残すため）
 - マージしたら `git switch main` → `git pull` で手元を最新にする
 - ドキュメントだけの変更（`docs/`・`CLAUDE.md` など）は MVP のブランチに混ぜず、`docs/〜` ブランチで別の PR にする
