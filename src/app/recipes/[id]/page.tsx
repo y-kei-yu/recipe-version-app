@@ -21,7 +21,6 @@ export default async function RecipesDetail({ params }: PageProps<'/recipes/[id]
 
   return (
     <>
-      <h1>レシピ詳細画面</h1>
       <RecipeDetail recipe={recipe} latestVersion={latestVersion} />
 
     </>
