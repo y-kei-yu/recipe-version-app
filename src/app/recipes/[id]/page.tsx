@@ -1,4 +1,5 @@
-import { mockRecipes } from "@/lib/mock-recipes";
+import RecipeDetail from "@/components/recipes/recipe-detail";
+import { mockRecipes, mockRecipeVersions } from "@/lib/mock-recipes";
 import { notFound } from "next/navigation";
 
 export default async function RecipesDetail({ params }: PageProps<'/recipes/[id]'>) {
@@ -11,13 +12,18 @@ export default async function RecipesDetail({ params }: PageProps<'/recipes/[id]
     notFound();
   }
 
+  const latestVersion = mockRecipeVersions.find((recipeVersion) => recipe.id === recipeVersion.recipeId && recipe.latestVersionNumber === recipeVersion.versionNumber);
+
+  if (!latestVersion) {
+    notFound();
+  }
 
 
   return (
     <>
       <h1>レシピ詳細画面</h1>
-      <p>{recipeId}</p>
-      <p>{recipe.title}</p>
+      <RecipeDetail recipe={recipe} latestVersion={latestVersion} />
+
     </>
   );
 }
