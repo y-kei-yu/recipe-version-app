@@ -1,6 +1,6 @@
 import RecipeDetail from "@/components/recipes/recipe-detail";
 import { Recipe, RecipeVersion } from "@/lib/types";
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, screen, within } from "@testing-library/react";
 import { afterEach, expect, test } from "vitest";
 
 const mockRecipe1: Recipe =
@@ -73,4 +73,21 @@ test("レシピ名、説明、材料、手順が表示される", () => {
   expect(screen.getByText("レシピ1の説明")).toBeInTheDocument();
   expect(screen.getByText("玉ねぎ")).toBeInTheDocument();
   expect(screen.getByText("玉ねぎを1cm間隔で切る")).toBeInTheDocument();
+});
+
+test("材料と手順が行ごとに分かれて表示される", () => {
+  render(<RecipeDetail recipe={mockRecipe1} latestVersion={mockRecipeVersion1} />);
+  const lists = screen.getAllByRole("list");
+
+  //　材料のテスト
+  const ingredientItemLines = within(lists[0]).getAllByRole("listitem");
+  expect(ingredientItemLines).toHaveLength(4);
+
+  expect(ingredientItemLines[0]).toHaveTextContent("じゃがいも");
+
+  //手順
+  const stepItemLines = within(lists[1]).getAllByRole("listitem");
+  expect(stepItemLines).toHaveLength(3);
+
+  expect(stepItemLines[0]).toHaveTextContent("じゃがいもの皮を剥く");
 });
