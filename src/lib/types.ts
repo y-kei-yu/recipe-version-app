@@ -5,3 +5,15 @@ export type Recipe = {
   latestVersionNumber: number;
   updatedAt: Date;
 };
+
+export type RecipeVersion = {
+  id: number;
+  recipeId: number;
+  versionNumber: number;
+  ingredients: string;
+  steps: string;
+  changeMemo: string | null;
+  rating: number | null;
+  resultMemo: string | null;
+  createdAt: Date;
+};
