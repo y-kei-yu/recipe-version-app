@@ -18,9 +18,5 @@ export default async function RecipesDetail({ params }: PageProps<'/recipes/[id]
     notFound();
   }
 
-  return (
-    <>
-      <RecipeDetail recipe={recipe} latestVersion={latestVersion} />
-    </>
-  );
+  return (<RecipeDetail recipe={recipe} latestVersion={latestVersion} />);
 }

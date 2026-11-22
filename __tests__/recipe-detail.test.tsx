@@ -21,7 +21,6 @@ const mockRecipe2: Recipe =
   updatedAt: new Date("2026-11-02T10:00:00+09:00"),
 };
 
-
 const mockRecipeVersion1: RecipeVersion =
 {
   id: 1,
@@ -65,13 +64,13 @@ test("材料と手順が行ごとに分かれて表示される", () => {
   render(<RecipeDetail recipe={mockRecipe1} latestVersion={mockRecipeVersion1} />);
   const lists = screen.getAllByRole("list");
 
-  //　材料のテスト
+  // 材料のテスト
   const ingredientItemLines = within(lists[0]).getAllByRole("listitem");
   expect(ingredientItemLines).toHaveLength(4);
 
   expect(ingredientItemLines[0]).toHaveTextContent("じゃがいも");
 
-  //手順
+  // 手順のテスト
   const stepItemLines = within(lists[1]).getAllByRole("listitem");
   expect(stepItemLines).toHaveLength(3);
 
@@ -94,5 +93,3 @@ test("説明が未記入のとき「記載なし」と表示される", () => {
   render(<RecipeDetail recipe={mockRecipe2} latestVersion={mockRecipeVersion2} />);
   expect(screen.getByText("記載なし")).toBeInTheDocument();
 });
-
-
