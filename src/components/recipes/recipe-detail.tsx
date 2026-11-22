@@ -38,7 +38,6 @@ export default function RecipeDetail({
       <Link href="/recipes">
         一覧へ
       </Link>
-
     </>
   );
 }
