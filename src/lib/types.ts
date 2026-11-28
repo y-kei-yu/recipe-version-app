@@ -17,3 +17,18 @@ export type RecipeVersion = {
   resultMemo: string | null;
   createdAt: Date;
 };
+
+export type RecipeFormState = {
+  errors: {
+    title?: string[];
+    description?: string[];
+    ingredients?: string[];
+    steps?: string[];
+  };
+  values: {
+    title: string;
+    description: string;
+    ingredients: string;
+    steps: string;
+  };
+};

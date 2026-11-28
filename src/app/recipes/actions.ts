@@ -2,20 +2,29 @@
 
 import prisma from "@/lib/prisma";
 import { recipeSchema } from "@/lib/recipe-schema";
+import { RecipeFormState } from "@/lib/types";
 import { redirect } from "next/navigation";
+import { z } from "zod";
 
-export async function createRecipe(formData: FormData) {
+// Server Action
+export async function createRecipe(
+  _prevState: RecipeFormState,
+  formData: FormData,
+) {
+  // フォームから値を取り出して、文字列にしてまとめる
+  const values = {
+    title: String(formData.get("title") ?? ""),
+    description: String(formData.get("description") ?? ""),
+    ingredients: String(formData.get("ingredients") ?? ""),
+    steps: String(formData.get("steps") ?? ""),
+  };
+
   // zodチェック
-  const result = recipeSchema.safeParse({
-    title: formData.get("title"),
-    description: formData.get("description"),
-    ingredients: formData.get("ingredients"),
-    steps: formData.get("steps"),
-  });
+  const result = recipeSchema.safeParse(values);
 
-  // バリデーションエラーなら処理終了
+  // バリデーションエラーならエラーと入力内容を返す
   if (!result.success) {
-    return;
+    return { errors: z.flattenError(result.error).fieldErrors, values };
   }
 
   // DB登録
